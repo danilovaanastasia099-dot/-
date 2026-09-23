@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Лента компонентов</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="feed-container">
+        <video autoplay muted loop class="feed-video">
+            <source src="{{ .service.VideoURL }}" type="video/mp4">
+        </video>
+
+        <div class="feed-content">
+            <div class="overlay-bottom">
+                <div class="left-info">
+                    <h1 class="feed-title">{{ .service.Name }}</h1>
+                    <div class="feed-description">
+                        {{ if .expanded }}
+                            <p>{{ .service.Description }}</p>
+                            <a href="{{ .lessURL }}" class="desc-toggle">Меньше</a>
+                        {{ else }}
+                            <p>{{ .shortDesc }}</p>
+                            {{ if ne .shortDesc .service.Description }}
+                                <a href="{{ .moreURL }}" class="desc-toggle">Больше</a>
+                            {{ end }}
+                        {{ end }}
+                    </div>
+                </div>
+
+                <div class="right-controls">
+                    <div class="feed-params">
+                        <div class="param-item"><span class="param-label">Тип:</span><span class="param-value">{{ .service.Type }}</span></div>
+                        <div class="param-item"><span class="param-label">TDP:</span><span class="param-value">{{ .service.TDP }} Вт</span></div>
+                    </div>
+
+                    <div class="feed-actions">
+                        <button class="like-button">
+                            <svg class="heart-icon" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                            <span>{{ .likes }}</span>
+                        </button>
+
+                        <a href="/feed/{{ .service.ID }}?next=true" class="next-button">Следующий</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    
+    <nav class="bottom-nav">
+        <a href="/feed" class="nav-item active">
+            <span>Лента</span>
+        </a>
+        <a href="/add" class="nav-item">
+            <span>Добавление</span>
+        </a>
+        <a href="/cards" class="nav-item">
+            <span>Плитка</span>
+        </a>
+    </nav>
+</body>
+</html>

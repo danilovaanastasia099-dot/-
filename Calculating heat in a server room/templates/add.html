@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Заявка / Добавление</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="add-container">
+        <h1 class="page-title">Добавление новой услуги</h1>
+
+        {{ if .cart }}
+        <div class="cart-section">
+            <h2>Временная заявка</h2>
+            <ul class="cart-list">
+                {{ range .cart }}
+                <li class="cart-item">
+                    <img src="{{ .ImageURL }}" alt="{{ .Name }}" class="cart-image">
+                    <div class="cart-info">
+                        <strong>{{ .Name }}</strong>
+                        <div>{{ .Type }} • {{ .TDP }} Вт</div>
+                    </div>
+                </li>
+                {{ end }}
+            </ul>
+            <div class="cart-actions">
+                <span class="cart-status">Статус заявки: <em>черновик</em></span>
+            </div>
+        </div>
+        {{ end }}
+
+        <div class="form-section">
+            <h2>Статус: черновик</h2>
+            <div class="form-media">
+                <label>Изображение:</label>
+                <img src="{{ .service.ImageURL }}" class="preview-image">
+                <label>Видео:</label>
+                <video controls class="preview-video">
+                    <source src="{{ .service.VideoURL }}" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="form-text">
+                <div class="form-row">
+                    <div class="form-label"><strong>Название:</strong></div>
+                    <div class="form-field"><input type="text" name="name" value="{{ .service.Name }}"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-label"><strong>Описание:</strong></div>
+                    <div class="form-field"><textarea rows="4" name="description">{{ .service.Description }}</textarea></div>
+                </div>
+            </div>
+
+            <div class="form-params">
+                <div class="form-row">
+                    <div class="form-label"><strong>Тип:</strong></div>
+                    <div class="form-field"><input type="text" name="type" value="{{ .service.Type }}"></div>
+                </div>
+                <div class="form-row">
+                    <div class="form-label"><strong>TDP (Вт):</strong></div>
+                    <div class="form-field"><input type="number" name="tdp" value="{{ .service.TDP }}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="bottom-nav">
+        <a href="/feed" class="nav-item">
+            <span>Лента</span>
+        </a>
+        <a href="/add" class="nav-item active">
+            <span>Добавление</span>
+        </a>
+        <a href="/cards" class="nav-item">
+            <span>Плитка</span>
+        </a>
+    </nav>
+</body>
+</html>

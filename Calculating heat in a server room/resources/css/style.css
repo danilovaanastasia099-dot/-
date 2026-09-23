@@ -1,0 +1,494 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root {
+    --color-white: #FFFFFF;
+    --color-cream: #F5F0EB;
+    --color-brown: #2B2522;
+    --border-radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--color-brown);
+}
+
+body {
+    background: var(--color-cream);
+    min-height: 100vh;
+    padding-bottom: 70px;
+}
+
+/* Стили для нижней навигации */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 70px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+    border-radius: var(--border-radius);
+}
+
+.nav-item:hover {
+    background: var(--color-cream);
+}
+
+.nav-item.active {
+    background: var(--color-cream);
+    font-weight: bold;
+}
+
+/* Стили для ленты */
+.feed-container {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    height: 640px; 
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.feed-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+}
+
+.feed-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+    padding: 16px;
+    color: var(--color-white);
+}
+
+.overlay-bottom { position: relative; display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; }
+.left-info { max-width: 60%; }
+.right-controls { position: absolute; right: 16px; bottom: 16px; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+
+.feed-title {
+    color: var(--color-white);
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.feed-description {
+    color: var(--color-white);
+    margin-bottom: 10px;
+    font-size: 13px;
+}
+
+.feed-params {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.param-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.param-label {
+    color: var(--color-cream);
+    font-size: 12px;
+}
+
+.param-value {
+    color: var(--color-white);
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.feed-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+}
+
+.like-button {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-white);
+}
+
+.heart-icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--color-white);
+}
+
+.next-button {
+    background: var(--color-white);
+    color: var(--color-brown);
+    padding: 8px 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    font-size: 13px;
+}
+
+.next-button:hover {
+    background: var(--color-cream);
+}
+
+.desc-toggle {
+    display: inline-block;
+    margin-top: 6px;
+    color: var(--color-cream);
+    text-decoration: underline;
+    font-size: 13px;
+}
+
+.total-info {
+    color: var(--color-cream);
+    font-size: 12px;
+    text-align: center;
+}
+
+/* Стили для страницы добавления */
+.add-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.page-title {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.add-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.form-section {
+    background: var(--color-white);
+    padding: 20px;
+    border-radius: var(--border-radius);
+}
+
+.form-section h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--color-brown);
+}
+
+.preview-image {
+    max-width: 200px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* Стили для каталога */
+.cards-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.filter-form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    background: var(--color-white);
+    padding: 15px;
+    border-radius: var(--border-radius);
+}
+
+.filter-form input {
+    flex: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.filter-form button {
+    background: var(--color-brown);
+    color: var(--color-white);
+    border: none;
+    padding: 8px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.filter-form button:hover {
+    background: #4a423d;
+}
+
+.clear-filter {
+    color: var(--color-brown);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.card {
+    background: var(--color-white);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    background: rgba(0,0,0,0.05);
+}
+
+.card-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.card-content {
+    padding: 15px;
+}
+
+.card-title {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.card-params {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.card-type {
+    background: var(--color-cream);
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-size: 12px;
+}
+
+.card-tdp {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.card-likes {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.heart-icon-small {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-brown);
+}
+
+/* Стили для страницы ошибки */
+.error-container {
+    max-width: 400px;
+    margin: 100px auto;
+    text-align: center;
+    background: var(--color-white);
+    padding: 40px;
+    border-radius: var(--border-radius);
+}
+
+.error-container h1 {
+    margin-bottom: 20px;
+}
+
+.back-button {
+    display: inline-block;
+    margin-top: 20px;
+    background: var(--color-brown);
+    color: var(--color-white);
+    padding: 10px 20px;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background: #4a423d;
+}
+
+@media (max-width: 420px) {
+    .cards-container, .add-container, .feed-container {
+        max-width: 420px; 
+        margin: 0 auto;
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 12px 0;
+    }
+
+    .card {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-image {
+        height: 140px;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 10px;
+    }
+
+    .card-title {
+        font-size: 14px;
+        margin-bottom: 6px;
+    }
+
+    .card-params {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+
+    .card-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .add-button {
+        background: var(--color-brown);
+        color: var(--color-white);
+        padding: 6px 8px;
+        border-radius: 8px;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .bottom-nav {
+        height: 64px;
+        box-shadow: 0 -2px 8px rgba(0,0,0,0.08);
+    }
+
+    .nav-item {
+        text-decoration: none;
+        color: var(--color-brown);
+    }
+
+    .nav-item.active {
+        font-weight: 700;
+    }
+
+    .add-button-overlay {
+        position: absolute;
+        right: 16px;
+        bottom: 100px;
+        background: rgba(255,255,255,0.95);
+        color: var(--color-brown);
+        padding: 8px 12px;
+        border-radius: 12px;
+        text-decoration: none;
+    }
+
+    .cart-section {
+        background: var(--color-white);
+        padding: 12px;
+        border-radius: 12px;
+        margin-bottom: 12px;
+    }
+
+    .cart-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .cart-item {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        padding: 6px 0;
+        border-bottom: 1px solid #eee;
+    }
+
+    .cart-image {
+        width: 64px;
+        height: 64px;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .preview-video {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-top: 8px;
+    }
+}

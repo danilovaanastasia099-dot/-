@@ -1,0 +1,18 @@
+{{ define "content" }}
+<section class="detail">
+    <div class="detail-card">
+        <h2 class="section-title">Подробнее о товаре</h2>
+        <div class="detail-layout single">
+            <img src="{{ call .ImageURL .MedicationCard.ImageKey }}" alt="{{ .MedicationCard.Name }}" class="detail-img"/>
+            <div class="detail-info">
+                <h3>{{ .MedicationCard.Name }}</h3>
+                <p class="detail-text">{{ .MedicationCard.Description }}</p>
+                <div class="detail-meta">Категория: {{ .MedicationCard.Category }}</div>
+                <div class="detail-meta">Производитель: {{ .MedicationCard.Manufacturer }}</div>
+            </div>
+        </div>
+    </div>
+</section>
+{{ end }}
+
+

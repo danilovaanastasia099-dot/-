@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог компонентов</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="cards-container">
+        <h1 class="page-title">Каталог компонентов</h1>
+        
+        <form action="/cards" method="GET" class="filter-form">
+            <label>Минимальный TDP (Вт):</label>
+            <input type="number" name="min_tdp" value="{{ .query }}" placeholder="Например: 200">
+            <button type="submit">Фильтровать</button>
+            {{ if .query }}
+            <a href="/cards" class="clear-filter">Сбросить</a>
+            {{ end }}
+        </form>
+        
+        <div class="cards-grid two-column">
+            {{ range .services }}
+            <div class="card">
+                <a href="/feed/{{ .Service.ID }}" class="card-link">
+                    <img src="{{ .Service.ImageURL }}" alt="{{ .Service.Name }}" class="card-image">
+                </a>
+                <div class="card-content">
+                    <h3 class="card-title">{{ .Service.Name }}</h3>
+                    <div class="card-params">
+                        <span class="card-type">{{ .Service.Type }}</span>
+                        <span class="card-tdp">{{ .Service.TDP }} Вт</span>
+                    </div>
+                    <div class="card-bottom">
+                        <div class="card-likes">
+                            <svg class="heart-icon-small" viewBox="0 0 24 24">
+                                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                            </svg>
+                            <span>{{ .Likes }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+    
+    <nav class="bottom-nav">
+        <a href="/feed" class="nav-item">
+            <span>Лента</span>
+        </a>
+        <a href="/add" class="nav-item">
+            <span>Добавление</span>
+        </a>
+        <a href="/cards" class="nav-item active">
+            <span>Плитка</span>
+        </a>
+    </nav>
+</body>
+</html>

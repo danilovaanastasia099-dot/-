@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+    <Platform Name="x86" />
+  </Configurations>
+  <Project Path="Calculating heat in a server room/Calculating heat in a server room.vcxproj" Id="74986daf-e2e2-48b4-8f4a-6d781692bbe1" />
+</Solution>
